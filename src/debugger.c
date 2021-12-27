@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
         //initialize tracing
         ptrace(PTRACE_TRACEME, 0, NULL, NULL);
         raise(SIGSTOP);
-       
+
         execve(argv[1], args, NULL);
     } else {
         Tracee* process = (Tracee*)malloc(sizeof(Tracee));
