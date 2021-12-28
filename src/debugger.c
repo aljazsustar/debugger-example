@@ -34,6 +34,7 @@ void loop(Tracee* process) {
             
             //prompt user and read user input
             printf("debug> ");
+            
             fflush(stdout);
             char input[20];  
             scanf("%s", input);
@@ -53,6 +54,7 @@ void loop(Tracee* process) {
                 int signal = WSTOPSIG(status);
                 if (signal == (SIGTRAP | 0x80)) {
                     printf("Inside syscall\n");
+                    //ptrace_syscall_info(process, &status);
                     fflush(stdout);
                 } else {
                     printf("Received signal number %d\n", signal);
@@ -60,8 +62,8 @@ void loop(Tracee* process) {
                 }
                 continue;
             } 
-            
-            //wait(NULL);
+            status = 0;
+            wait(NULL);
         }
 }
 

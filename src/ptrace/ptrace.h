@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/wait.h>
+#include <linux/ptrace.h>
 
 typedef struct Tracee {
     pid_t pid;
@@ -18,3 +19,4 @@ void ptrace_kill(Tracee* process, int* status);
 void ptrace_set_options(Tracee* process, unsigned int options);
 void get_registers(Tracee* process, int* status);
 void ptrace_detach(Tracee* process);
+void ptrace_syscall_info(Tracee* process, int* status);
